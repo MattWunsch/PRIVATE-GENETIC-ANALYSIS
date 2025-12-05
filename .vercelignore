@@ -1,0 +1,12 @@
+# Ignore source files
+*.sol
+node_modules/
+.env*
+*.log
+.git/
+.cache/
+dist/
+build/
+*.bat
+*.md
+README*
