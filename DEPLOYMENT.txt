@@ -1,0 +1,45 @@
+DEPLOYMENT INSTRUCTIONS
+======================
+
+BEFORE DEPLOYMENT:
+1. Deploy the PrivateGeneticAnalysis.sol contract to Sepolia testnet
+2. Update the CONTRACT_ADDRESS variable in app.js with the deployed contract address
+3. Replace "0x..." with the actual contract address
+
+VERCEL DEPLOYMENT:
+1. Connect your GitHub repository to Vercel
+2. Import this project folder
+3. Vercel will automatically detect it as a static site
+4. Deploy with default settings
+
+ALTERNATIVE DEPLOYMENT METHODS:
+- GitHub Pages: Push to GitHub and enable Pages in repository settings
+- Netlify: Drag and drop the folder to Netlify dashboard
+- Any static hosting provider
+
+FEATURES:
+- Zero dependencies - pure HTML/CSS/JS
+- CDN-loaded ethers.js for blockchain interaction
+- Responsive design for mobile and desktop
+- Real blockchain interactions (no demo mode)
+- Complete FHE genetic analysis platform
+- Admin, Lab, and Patient portals
+
+SECURITY NOTES:
+- This is for educational/research purposes
+- Uses FHE (Fully Homomorphic Encryption) for privacy
+- Always verify contract addresses before interacting
+- Test thoroughly on testnet before mainnet use
+
+CONTRACT FEATURES:
+- Private genetic sample submission
+- Encrypted analysis using FHE
+- Disease risk assessment
+- Lab authorization system
+- Emergency controls for admin
+
+TESTING:
+1. Connect MetaMask to Sepolia testnet
+2. Ensure you have Sepolia ETH for gas fees
+3. Use the "Generate Random Sample" feature for testing
+4. Submit sample, request analysis, then decrypt results
