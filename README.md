@@ -11,6 +11,10 @@
 
 A comprehensive, standalone FHEVM example demonstrating privacy-preserving genetic analysis on blockchain. This repository showcases how sensitive medical data can be analyzed on-chain using fully homomorphic encryption while maintaining complete patient confidentiality.
 
+Live Demo : https://private-genetic-analysis.vercel.app/
+
+Video :https://streamable.com/kbp8gn or PrivateGeneticAnalysis.mp4
+
 ---
 
 ## 📋 Table of Contents
