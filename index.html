@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidential DNA Analysis Platform</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+    <!-- Primary ethers.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"
+            onerror="this.onerror=null; this.src='https://unpkg.com/ethers@5.7.2/dist/ethers.umd.min.js'"></script>
+    <!-- Additional fallback check -->
+    <script>
+        // Secondary fallback if primary CDN fails
+        window.addEventListener('load', function() {
+            if (typeof ethers === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js';
+                document.head.appendChild(script);
+            }
+        });
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">🧬</div>
+                <h1>DNA Confidential</h1>
+                <div class="logo-subtitle">Secure Genetic Testing</div>
+            </div>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-indicator"></span>
+                <span class="status-text">Not Connected</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="welcome-section" id="welcomeSection">
+                <div class="dna-helix">
+                    <div class="helix-strand"></div>
+                    <div class="helix-strand"></div>
+                </div>
+                <h2>Confidential DNA Testing Platform</h2>
+                <p>Your genetic privacy matters. Conduct secure DNA analysis with military-grade encryption technology that keeps your genetic information completely confidential.</p>
+                <div class="privacy-features">
+                    <div class="feature">
+                        <span class="feature-icon">🔒</span>
+                        <span>Zero-Knowledge Testing</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🧬</span>
+                        <span>DNA Encryption</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🏥</span>
+                        <span>Medical Grade Privacy</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary pulse" id="connectWallet">🔗 Connect Wallet to Start</button>
+            </div>
+
+            <div class="dashboard" id="dashboard" style="display: none;">
+                <div class="user-info">
+                    <h3>Connected Wallet</h3>
+                    <p id="walletAddress"></p>
+                    <p>Network: <span id="networkName">Sepolia Testnet</span></p>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('patient')">🧬 DNA Testing</button>
+                    <button class="tab-btn" onclick="switchTab('lab')">🔬 Laboratory</button>
+                    <button class="tab-btn" onclick="switchTab('admin')">⚙️ Management</button>
+                </div>
+
+                <!-- DNA Testing Tab -->
+                <div id="patientTab" class="tab-content active">
+                    <div class="card dna-card">
+                        <div class="card-header">
+                            <h3>🧬 Submit DNA Sample</h3>
+                            <p class="card-subtitle">Confidential genetic analysis with complete privacy protection</p>
+                        </div>
+                        <div class="dna-input-section">
+                            <div class="form-group">
+                                <label>DNA Sequence (32 nucleotides)</label>
+                                <div class="nucleotide-info">
+                                    <span class="nucleotide">A=65</span>
+                                    <span class="nucleotide">T=84</span>
+                                    <span class="nucleotide">G=71</span>
+                                    <span class="nucleotide">C=67</span>
+                                </div>
+                                <div class="dna-input-container">
+                                    <textarea id="geneSequenceInput" placeholder="Enter your 32-nucleotide DNA sequence as numeric values (e.g., 65,84,67,71,84,65...)"></textarea>
+                                    <div class="dna-visualization" id="dnaVisualization"></div>
+                                </div>
+                                <div class="input-actions">
+                                    <button class="btn btn-secondary" onclick="generateRandomSequence()">🎲 Generate Test Sample</button>
+                                    <button class="btn btn-info" onclick="validateSequence()">✓ Validate DNA</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="privacy-notice">
+                            <span class="privacy-icon">🔒</span>
+                            <p>Your DNA data is encrypted using FHE technology. Only you can decrypt the results.</p>
+                        </div>
+                        <button class="btn btn-success btn-large" onclick="submitGeneticSample()">🔬 Submit Confidential Sample</button>
+                    </div>
+
+                    <div class="card analysis-card">
+                        <div class="card-header">
+                            <h3>🔬 DNA Analysis</h3>
+                            <p class="card-subtitle">Start confidential genetic risk assessment</p>
+                        </div>
+                        <div class="analysis-info">
+                            <div class="analysis-feature">
+                                <span class="feature-icon">🧪</span>
+                                <div>
+                                    <strong>Disease Risk Analysis</strong>
+                                    <p>Screen for 5 genetic disease markers</p>
+                                </div>
+                            </div>
+                            <div class="analysis-feature">
+                                <span class="feature-icon">🔐</span>
+                                <div>
+                                    <strong>Encrypted Processing</strong>
+                                    <p>Your DNA never leaves encrypted state</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-large" onclick="requestAnalysis()">🚀 Start Confidential Analysis</button>
+                    </div>
+
+                    <div class="card results-card">
+                        <div class="card-header">
+                            <h3>🎯 Analysis Results</h3>
+                            <p class="card-subtitle">Decrypt and view your confidential results</p>
+                        </div>
+                        <div class="results-section">
+                            <div id="analysisResults" class="results-container">
+                                <div class="no-results">
+                                    <span class="result-icon">📊</span>
+                                    <p>Complete DNA analysis to view results</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" onclick="requestResultDecryption()">🔓 Decrypt My Results</button>
+                        </div>
+                    </div>
+
+                    <div class="card status-card">
+                        <div class="card-header">
+                            <h3>📋 Testing Status</h3>
+                            <p class="card-subtitle">Track your DNA testing progress</p>
+                        </div>
+                        <div id="sampleStatus" class="status-container">
+                            <div class="status-item">
+                                <span class="status-icon">⏳</span>
+                                <span>Waiting for DNA sample submission</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary" onclick="checkSampleStatus()">🔄 Refresh Status</button>
+                    </div>
+                </div>
+
+                <!-- Laboratory Tab -->
+                <div id="labTab" class="tab-content">
+                    <div class="card lab-card">
+                        <div class="card-header">
+                            <h3>🧬 Genetic Markers Database</h3>
+                            <p class="card-subtitle">View disease marker configurations and risk weights</p>
+                        </div>
+                        <div class="markers-section">
+                            <div id="diseaseMarkers" class="markers-container">
+                                <div class="no-markers">
+                                    <span class="marker-icon">🔬</span>
+                                    <p>Load genetic markers database</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary" onclick="loadDiseaseMarkers()">📊 Load Markers Database</button>
+                        </div>
+                    </div>
+
+                    <div class="card patient-lookup-card">
+                        <div class="card-header">
+                            <h3>👤 Patient Lookup</h3>
+                            <p class="card-subtitle">Check DNA testing status for authorized patients</p>
+                        </div>
+                        <div class="lookup-section">
+                            <div class="form-group">
+                                <label>Patient Wallet Address:</label>
+                                <input type="text" id="patientAddressInput" placeholder="0x1234...abcd" class="address-input">
+                            </div>
+                            <button class="btn btn-primary" onclick="checkPatientStatus()">🔍 Lookup Patient</button>
+                            <div id="patientStatusResults" class="lookup-results"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Tab -->
+                <div id="adminTab" class="tab-content">
+                    <div class="card">
+                        <h3>Authorize Research Lab</h3>
+                        <div class="form-group">
+                            <label>Lab Address:</label>
+                            <input type="text" id="labAddressInput" placeholder="0x...">
+                        </div>
+                        <button class="btn btn-success" onclick="authorizeResearchLab()">Authorize Lab</button>
+                        <button class="btn btn-danger" onclick="revokeLabAuthorization()">Revoke Authorization</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Update Disease Marker</h3>
+                        <div class="form-group">
+                            <label>Disease ID (1-5):</label>
+                            <input type="number" id="diseaseIdInput" min="1" max="5" placeholder="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Risk Weight (0-100):</label>
+                            <input type="number" id="riskWeightInput" min="0" max="100" placeholder="85">
+                        </div>
+                        <button class="btn btn-primary" onclick="updateDiseaseMarker()">Update Marker</button>
+                        <button class="btn btn-warning" onclick="toggleDiseaseMarker()">Toggle Active</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Contract Statistics</h3>
+                        <div id="contractStats"></div>
+                        <button class="btn btn-secondary" onclick="loadContractStats()">Load Stats</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Emergency Controls</h3>
+                        <button class="btn btn-danger" onclick="emergencyPause()">Emergency Pause</button>
+                        <button class="btn btn-success" onclick="emergencyResume()">Emergency Resume</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Processing transaction...</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
