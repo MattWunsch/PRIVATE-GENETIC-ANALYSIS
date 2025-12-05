@@ -1,0 +1,32 @@
+PRIVATE GENETIC ANALYSIS - VIDEO NARRATION DIALOGUE
+===================================================
+
+OPENING & PROBLEM STATEMENT
+
+Genetic testing reveals our most sensitive health information, but storing DNA data on blockchain has always meant sacrificing privacy. What if we could analyze genetic data on-chain without ever exposing it?
+
+
+SOLUTION INTRODUCTION
+
+Introducing Private Genetic Analysis, a fully homomorphic encryption solution built on Zama's FHEVM. This smart contract analyzes encrypted DNA sequences against disease markers while keeping all genetic data completely confidential.
+
+
+KEY FEATURES DEMONSTRATION
+
+Watch how it works: patients submit their DNA sequence, which gets encrypted using FHE operations. The smart contract analyzes this encrypted data against five disease markers using homomorphic comparisons. Risk scores are calculated entirely on encrypted data. Results remain confidential until the patient requests decryption. Authorized research labs can access data with proper permissions, all while maintaining complete genetic privacy.
+
+
+TECHNICAL HIGHLIGHTS
+
+Built with comprehensive Hardhat testing, automated documentation generation, and demonstrating essential FHEVM concepts including encrypted comparisons, homomorphic arithmetic, and secure access control patterns.
+
+
+CLOSING & CALL TO ACTION
+
+Privacy-preserving healthcare on blockchain is now possible. Explore the full implementation, run the tests, and deploy your own instance.
+
+
+===================================================
+END OF NARRATION
+Total Word Count: 179 words
+Estimated Speaking Duration: 60 seconds (at 180 words per minute)
