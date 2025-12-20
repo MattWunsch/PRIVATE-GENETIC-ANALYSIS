@@ -13,7 +13,7 @@ A comprehensive, standalone FHEVM example demonstrating privacy-preserving genet
 
 Live Demo : https://private-genetic-analysis.vercel.app/
 
-Video :https://streamable.com/kbp8gn or PrivateGeneticAnalysis.mp4
+Video :https://youtu.be/F33MtN4PUKk or PrivateGeneticAnalysis.mp4
 
 ---
 
