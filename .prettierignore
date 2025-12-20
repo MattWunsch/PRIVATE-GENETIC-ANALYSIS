@@ -1,0 +1,11 @@
+node_modules/
+artifacts/
+cache/
+typechain-types/
+coverage/
+dist/
+build/
+*.env
+package-lock.json
+yarn.lock
+base-template/node_modules/
